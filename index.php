@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="jumbotron">
+	
 		<div class="container staff_header" >
 			<div class="container-fluid">
 				<div class="page-header"><h1>Widget Corp</h1></div>
@@ -32,7 +32,7 @@
 				</div> <!-- end of staff-right	 -->
 			</div> <!-- end of container-fluid -->
 		</div> <!-- end of container -->
-	</div> <!-- end of jumbotron -->
+	
 	
 </body>
 </html>
