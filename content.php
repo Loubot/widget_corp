@@ -1,24 +1,30 @@
 <?php require_once('includes/connection.php'); ?>
+<?php require_once('includes/functions.php'); ?>
 
 <?php include('includes/header.php'); ?>
 <div class="container">
 			<div class="container-fluid staff_body">
 				<div class="col-md-3 staff-left">
 					<?php
-						$subject_set = mysql_query("SELECT * FROM subjects", $connection);
-						if (!$subject_set) {
-							die("Database query failed: ". mysql_error());
-						}
+						$query = "SELECT * 
+							FROM subjects 
+							ORDER BY position ASC";
+
+						$subject_set = mysql_query($query, $connection);
+						confirm_query($subject_set);
+
 						echo "<ul class='list-group staff-list'>";
 						while ($subject = mysql_fetch_array($subject_set)) {
 							echo "<li class='list-group-item staff-list'>{$subject["menu_name"]}";
 							
+							$query = "SELECT * 
+								FROM pages 
+								WHERE subject_id = {$subject["id"]}
+								ORDER BY position ASC";
 
-							$page_set = mysql_query("SELECT * FROM pages WHERE subject_id = {$subject["id"]}");
-
-							if (!$page_set) {
-								die("Database query failed: " . mysql_error());
-							}
+							$page_set = mysql_query($query);
+							confirm_query($page_set);
+							
 							echo "<ul>";
 							while($page = mysql_fetch_array($page_set)){
 								echo "<li>{$page['menu_name']} </li>";
