@@ -9,17 +9,21 @@
 						if (!$subject_set) {
 							die("Database query failed: ". mysql_error());
 						}
+						echo "<ul class='list-group staff-list'>";
 						while ($subject = mysql_fetch_array($subject_set)) {
-							echo $subject["menu_name"]."<br>";
+							echo "<li class='list-group-item staff-list'>{$subject["menu_name"]}";
+							
 
 							$page_set = mysql_query("SELECT * FROM pages WHERE subject_id = {$subject["id"]}");
 
 							if (!$page_set) {
 								die("Database query failed: " . mysql_error());
 							}
+							echo "<ul>";
 							while($page = mysql_fetch_array($page_set)){
-								echo "{$page['menu_name']} <br>";
+								echo "<li>{$page['menu_name']} </li>";
 							}
+							echo "</ul>";
 						}
 
 
