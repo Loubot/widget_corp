@@ -8,4 +8,4 @@
 						<a href="#" class="list-group-item"><u>Add Staff User</u></a>
 						<a href="#" class="list-group-item"><u>Logout</u></a>					
 					</div> <!-- end of list-group -->
-<?php include('includes/footer.php'); ?>
+<?php require_once('includes/footer.php'); ?>
