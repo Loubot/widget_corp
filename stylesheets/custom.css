@@ -5,6 +5,7 @@
 }
 
 .staff-left{
+	padding-top: 1em;
 	height:100%;
 	background-color: #990000;
 	color: white;
@@ -20,6 +21,6 @@
 	background-color: #FFCC99;
 }
 
-.left_menu{
-	
+.color-left{
+	background-color: #990000;
 }

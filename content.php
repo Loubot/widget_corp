@@ -6,31 +6,26 @@
 			<div class="container-fluid staff_body">
 				<div class="col-md-3 staff-left">
 					<?php
-						$query = "SELECT * 
-							FROM subjects 
-							ORDER BY position ASC";
+						$subject_set = get_all_subjects();
 
-						$subject_set = mysql_query($query, $connection);
-						confirm_query($subject_set);
-
-						echo "<ul class='list-group staff-list'>";
+						echo "<ul class='nav nav-pills nav-stacked'>";
 						while ($subject = mysql_fetch_array($subject_set)) {
-							echo "<li class='list-group-item staff-list'>{$subject["menu_name"]}";
+							echo "<li class='list-group-item staff-list color-left'><a href='content.php?subj=".
+							urldecode($subject['id']) .
+							"'>{$subject["menu_name"]}</a></li>";							
 							
-							$query = "SELECT * 
-								FROM pages 
-								WHERE subject_id = {$subject["id"]}
-								ORDER BY position ASC";
-
-							$page_set = mysql_query($query);
-							confirm_query($page_set);
-							
-							echo "<ul>";
+							$page_set = get_pages_for_subjects($subject['id']);
+														
+							echo "<ul class= 'list-group'>";
 							while($page = mysql_fetch_array($page_set)){
-								echo "<li>{$page['menu_name']} </li>";
+								echo "<li class='list-group-item color-left'><a href='content.php?page=".
+								urldecode($page['id']) .
+								"'>{$page['menu_name']}</a> </li>";
 							}
 							echo "</ul>";
 						}
+
+						echo "</ul>"
 
 
 					?>
