@@ -17,7 +17,7 @@
 	
 	
 ?>
-<div class="container">
+<div class="container staff-container">
 			<div class="container-fluid staff_body">
 				<div class="col-md-3 staff-left">
 					<?php

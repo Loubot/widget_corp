@@ -1,9 +1,13 @@
-html{
+html,body{
 	height: 100%;
 }
 
-body{
-	min-height: 100%;
+.staff-container{
+	height: 100%;	
+}
+
+.staff_body{
+	height: 100%;
 }
 .staff_header{
 	background-color: #000066;
