@@ -2,30 +2,51 @@
 <?php require_once('includes/functions.php'); ?>
 
 <?php include('includes/header.php'); ?>
+<?php
+	if (isset($_GET['subj'])) {
+		$sel_subj = $_GET['subj'];
+		$sel_page = "";
+	}elseif (isset($_GET['page'])) {
+		$sel_page = $_GET['page'];
+		$sel_subj = "";
+	}else{
+		$sel_subj = "";
+		$sel_page = "";
+	}
+?>
 <div class="container">
 			<div class="container-fluid staff_body">
 				<div class="col-md-3 staff-left">
 					<?php
 						$subject_set = get_all_subjects();
 
-						echo "<ul class='nav nav-pills nav-stacked'>";
+						echo "<div class='list-group'>";
 						while ($subject = mysql_fetch_array($subject_set)) {
-							echo "<li class='list-group-item staff-list color-left'><a href='content.php?subj=".
-							urldecode($subject['id']) .
-							"'>{$subject["menu_name"]}</a></li>";							
+							echo "<a class='list-group-item";
+							if ($subject['id'] == $sel_subj) {
+								echo " active";
+							}
+							echo "' href='content.php?subj=" . urldecode($subject['id']) .
+							"'><h4>{$subject["menu_name"]}</h4></a>";
 							
 							$page_set = get_pages_for_subjects($subject['id']);
 														
-							echo "<ul class= 'list-group'>";
+							echo "<div class= 'list-group'>";
 							while($page = mysql_fetch_array($page_set)){
-								echo "<li class='list-group-item color-left'><a href='content.php?page=".
+								echo "<a class='list-group-item staff-list";
+								if ($page['id'] == $sel_page) {
+									echo " active";
+								}
+								echo "' href='content.php?page=".
 								urldecode($page['id']) .
-								"'>{$page['menu_name']}</a> </li>";
+								"'>{$page['menu_name']}</a>";
 							}
-							echo "</ul>";
+							echo "</div>";
 						}
 
-						echo "</ul>"
+						echo "</div>";
+
+						
 
 
 					?>
@@ -36,10 +57,10 @@
 						<div class="panel-heading">Staff menu</div>
 						<div class="panel-body">Welcome to the staff area</div>
 					</div> <!-- end of panel-default -->
-					<div class="list-group">
-						<a href="#" class="list-group-item"><u>Manage Website Content</u></a>
-						<a href="#" class="list-group-item"><u>Add Staff User</u></a>
-						<a href="#" class="list-group-item"><u>Logout</u></a>					
-					</div> <!-- end of list-group -->
+					<?php
+						echo $sel_subj. "<br>";
+						echo $sel_page. "<br>";
+					?>
+
 <?php include('includes/footer.php'); ?>
 

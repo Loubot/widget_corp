@@ -12,15 +12,11 @@
 }
 
 .staff-list{
-	background-color: #990000 !important;
+	/*background-color: #990000 !important;*/
 }
 
 .staff-right{
 	padding-top: 1%;
 	height: 100%;
 	background-color: #FFCC99;
-}
-
-.color-left{
-	background-color: #990000;
 }
