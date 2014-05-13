@@ -3,47 +3,15 @@
 <?php require_once('includes/functions.php'); ?>
 
 <?php include('includes/header.php'); ?>
-<?php
-	if (isset($_GET['subj'])) {
-		$sel_page = NULL;
-		$sel_subject = get_subject_by_id($_GET['subj']);
-	}elseif (isset($_GET['page'])) {
-		$sel_subject = NULL;
-		$sel_page = get_page_by_id($_GET['page']);
-	}else{
-		$sel_subject = NULL;
-		$sel_page = NULL;
-	}
-	
-	
-?>
+<?php	find_selected_page();	?>
 <div class="container staff-container">
 			<div class="container-fluid staff_body">
 				<div class="col-md-3 staff-left">
 					<?php
-						$subject_set = get_all_subjects();
+						navigation($sel_subject, $sel_page);
 
-						echo "<div class='list-group'>";
-						while ($subject = mysql_fetch_array($subject_set)) {
-							echo "<a class='list-group-item";
-							if ($subject['id'] == $sel_subject['id']) { echo " active"; }
-							echo "' href='content.php?subj=" . urldecode($subject['id']) .
-							"'><h4>{$subject["menu_name"]}</h4></a>";
-							
-							$page_set = get_pages_for_subjects($subject['id']);
-														
-							echo "<div class= 'list-group'>";
-							while($page = mysql_fetch_array($page_set)){
-								echo "<a class='list-group-item";
-								if ($page['id'] == $sel_page['id']) { echo " active"; }
-								echo "' href='content.php?page=".
-								urldecode($page['id']) .
-								"'>{$page['menu_name']}</a>";
-							}
-							echo "</div>";
-						}
-
-						echo "</div>";
+							echo "<a href='new_subject.php' class='list-group-item list-group-item-info'>Add a new subject</a>";
+						echo "</div>"; //end of out list-group
 
 						
 
@@ -58,7 +26,10 @@
 					</div> <!-- end of panel-default -->
 					<?php
 						if (!is_null($sel_subject)) {
-							echo "<h2>{$sel_subject['menu_name']}</h2>";
+							echo "<div class='panel panel-default'>";
+								echo "<div class='panel-heading'>";
+									echo "<h2 class='panel-title'>{$sel_subject['menu_name']}</h2>";
+							
 						}elseif (!is_null($sel_page)) {
 							echo "<div class='panel panel-default'>";
 								echo "<div class='panel-heading'>";

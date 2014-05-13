@@ -61,4 +61,44 @@
 			return NULL;	
 		}
 	}
+
+	function find_selected_page(){
+		global $sel_subject;
+		global $sel_page;
+		if (isset($_GET['subj'])) {
+			$sel_page = NULL;
+			$sel_subject = get_subject_by_id($_GET['subj']);
+		}elseif (isset($_GET['page'])) {
+			$sel_subject = NULL;
+			$sel_page = get_page_by_id($_GET['page']);
+		}else{
+			$sel_subject = NULL;
+			$sel_page = NULL;
+		}
+	}
+
+	function navigation($sel_subject, $sel_page){
+		$subject_set = get_all_subjects();
+
+		echo "<div class='list-group'>";
+		while ($subject = mysql_fetch_array($subject_set)) {
+			echo "<a class='list-group-item";
+			if ($subject['id'] == $sel_subject['id']) { echo " active"; }
+			echo "' href='content.php?subj=" . urldecode($subject['id']) .
+			"'><h4>{$subject["menu_name"]}</h4></a>";
+			
+			$page_set = get_pages_for_subjects($subject['id']);
+										
+			echo "<div class= 'list-group'>";
+			while($page = mysql_fetch_array($page_set)){
+				echo "<a class='list-group-item";
+				if ($page['id'] == $sel_page['id']) { echo " active"; }
+				echo "' href='content.php?page=".
+				urldecode($page['id']) .
+				"'>{$page['menu_name']}</a>";
+			}
+			echo "</div>"; //end of inner list-group
+		}
+		
+	}
 ?>
