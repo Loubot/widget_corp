@@ -1,18 +1,21 @@
+
 <?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/functions.php'); ?>
 
 <?php include('includes/header.php'); ?>
 <?php
 	if (isset($_GET['subj'])) {
-		$sel_subj = $_GET['subj'];
-		$sel_page = "";
+		$sel_page = NULL;
+		$sel_subject = get_subject_by_id($_GET['subj']);
 	}elseif (isset($_GET['page'])) {
-		$sel_page = $_GET['page'];
-		$sel_subj = "";
+		$sel_subject = NULL;
+		$sel_page = get_page_by_id($_GET['page']);
 	}else{
-		$sel_subj = "";
-		$sel_page = "";
+		$sel_subject = NULL;
+		$sel_page = NULL;
 	}
+	
+	
 ?>
 <div class="container">
 			<div class="container-fluid staff_body">
@@ -23,9 +26,7 @@
 						echo "<div class='list-group'>";
 						while ($subject = mysql_fetch_array($subject_set)) {
 							echo "<a class='list-group-item";
-							if ($subject['id'] == $sel_subj) {
-								echo " active";
-							}
+							if ($subject['id'] == $sel_subject['id']) { echo " active"; }
 							echo "' href='content.php?subj=" . urldecode($subject['id']) .
 							"'><h4>{$subject["menu_name"]}</h4></a>";
 							
@@ -33,10 +34,8 @@
 														
 							echo "<div class= 'list-group'>";
 							while($page = mysql_fetch_array($page_set)){
-								echo "<a class='list-group-item staff-list";
-								if ($page['id'] == $sel_page) {
-									echo " active";
-								}
+								echo "<a class='list-group-item";
+								if ($page['id'] == $sel_page['id']) { echo " active"; }
 								echo "' href='content.php?page=".
 								urldecode($page['id']) .
 								"'>{$page['menu_name']}</a>";
@@ -58,8 +57,22 @@
 						<div class="panel-body">Welcome to the staff area</div>
 					</div> <!-- end of panel-default -->
 					<?php
-						echo $sel_subj. "<br>";
-						echo $sel_page. "<br>";
+						if (!is_null($sel_subject)) {
+							echo "<h2>{$sel_subject['menu_name']}</h2>";
+						}elseif (!is_null($sel_page)) {
+							echo "<div class='panel panel-default'>";
+								echo "<div class='panel-heading'>";
+									echo "<h2 class='panel-title'>{$sel_page['menu_name']}</h2>";
+								echo "</div>"; //end of panel-heading
+								echo "<div class='panel-body'>";
+									echo "{$sel_page['content']}";
+								echo "</div>"; //end of panel-body
+							echo "</div>"; //end of panel_default
+							
+						}else{
+							echo "<h2>Select a subject or page to edit</h2>";
+						}
+						
 					?>
 
 <?php include('includes/footer.php'); ?>

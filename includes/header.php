@@ -1,4 +1,6 @@
+<!DOCTYPE html> 
 <?php require_once('includes/functions.php'); ?>
+
 <html>
 <head>
 	<title>Widget Corp</title>
