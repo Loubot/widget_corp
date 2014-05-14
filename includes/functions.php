@@ -1,6 +1,5 @@
 <?php
 
-
 	//This file is the place to store all 
 
 	function mysql_prep($value){
@@ -14,6 +13,14 @@
 			if (!magic_quotes_active) {	$value = addslashes($value); }
 		}
 		return $value;
+	}
+
+	function redirect_to($location = NULL){
+		if ($location != NULL) {
+			header("Location: {$location}");
+			exit;
+		}
+		
 	}
 
 	function confirm_query($result_set){
