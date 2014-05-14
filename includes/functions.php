@@ -119,7 +119,7 @@
 				"'>{$page['menu_name']}</a>";
 			}
 			echo "</div>"; //end of inner list-group
-		}
-		
+		}		
 	}
+
 ?>

@@ -2,6 +2,40 @@ html,body{
 	height: 100%;
 }
 
+body{
+    background-color: #525252;
+}
+
+form{
+	padding: 1% 1% 1% 1%;	
+}
+
+
+.panel{
+	background: -webkit-linear-gradient(left,rgba(204, 204, 100,0),rgba(204, 204, 153,1)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(right,rgba(204, 204, 100,0),rgba(204, 204, 153,1)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(right,rgba(204, 204, 1000),rgba(204, 204, 153,1)); /*Fx 3.6-15*/
+	background: linear-gradient(to right, rgba(204, 204, 100,0), rgba(204, 204, 153,1)); /*Standard*/
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.form-container {
+	height: 100%;
+}
+
+.form-fluid-container, .form-parent{
+	height: 100%;
+}
+
+.form-panel{
+
+	height: 40%;
+}
+
+.panel-heading{
+	margin-bottom: 1%;
+}
+
 .staff-container{
 	height: 100%;	
 }
