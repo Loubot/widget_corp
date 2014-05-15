@@ -16,10 +16,10 @@
 	}
 
 	function redirect_to($location = NULL){
-		if ($location != NULL) {
-			header("Location: {$location}");
-			exit;
-		}
+		// if ($location != NULL) {
+		// 	header("Location: {$location}");
+		// 	exit;
+		// }
 		
 	}
 
@@ -114,12 +114,30 @@
 			while($page = mysql_fetch_array($page_set)){
 				echo "<a class='list-group-item";
 				if ($page['id'] == $sel_page['id']) { echo " active"; }
-				echo "' href='content.php?page=".
+				echo "' href='edit_subject.php?page=".
 				urldecode($page['id']) .
 				"'>{$page['menu_name']}</a>";
 			}
 			echo "</div>"; //end of inner list-group
 		}		
 	}
+
+	function validate_form($submitted_data){
+		$errors = array();
+		$required_fields = array('menu_name', 'position', 'visible');
+		foreach ($required_fields as $field_name) {
+			if (!isset($submitted_data[$field_name]) || empty($submitted_data[$field_name])) {
+				$errors[] = $field_name;
+			}
+		}
+		$fields_with_lengths = array('menu_name' => 30);
+		foreach ($fields_with_lengths as $fieldname => $maxlength) {
+			if (strlen(trim(mysql_prep($submitted_data[$fieldname]))) > $maxlength) {
+				$errors[] = $fieldname;
+			}
+			
+		}
+	}
+	return $errors;
 
 ?>

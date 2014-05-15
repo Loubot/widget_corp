@@ -16,11 +16,9 @@
 			$errors[] = $fieldname;
 		}
 		
-	if (!empty($errors)) {
-		redirect_to("new_subject.php");
-	}
-
-	
+		if (!empty($errors)) {
+			redirect_to("new_subject.php");
+		}	
 	}
 ?>
 

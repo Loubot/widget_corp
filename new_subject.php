@@ -48,8 +48,8 @@
 										<div class='col-xs-12 col-sm12 col-md-12'>
 											<div class="form-group">
 												<div class="btn-group visibility-buttons" data-toggle="buttons">
-													<label class="btn btn-default">
-														<input type="radio" name="visible" value="0" >Visible
+													<label class="btn btn-default ">
+														<input type="radio" class="visibility-button" name="visible" value="0" >Visible
 													</label>
 													<label class="btn btn-default">
 														<input type="radio" name="visible" value="1" >Invisible

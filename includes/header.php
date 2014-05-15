@@ -18,8 +18,7 @@
 			  //alert($('.input-group-btn').find('.btn').val());
 			});
 			$('#submit').click(function(e){
-				var value = $(".input-group-btn").find('.btn').val();
-				$('#subject_form').append("<input type='hidden' name='position' value='" + value + "'>");
+				alert($('.btn-group > .btn.active').attr("value"));
 								
 			})
 

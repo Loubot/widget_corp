@@ -2,6 +2,46 @@
 <?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/functions.php'); ?>
 
+<?php 
+
+	if(intval($_GET['subj']) == 0 ){
+		redirect_to('content.php');
+	}
+	if (isset($_POST['submit'])) { 
+		$errors = validate_form($_POST); 
+
+		if (empty($errors)) {
+			//perform update
+			$id = mysql_prep($_GET['subj']);
+			$menu_name = mysql_prep($_POST['menu_name']);
+			echo $_POST['menu_name'];
+			echo $_POST['subj'];
+			echo $_POST['position'];
+			echo $_POST['visible'];
+			$position = mysql_prep($_POST['position']);
+			$visible = mysql_prep($_POST['visible']);
+
+			$query = "UPDATE subjects SET
+								menu_name = {$menu_name}
+								position = {$position}
+								visible = {$visible}
+							WHERE id = {$id}";
+
+							echo $query;
+			$result = mysql_query($query, $connection);
+			if (mysql_affected_rows() == 1) {
+				echo 'wahey';
+			}else{
+				//failed
+			}
+		}else{
+			echo 'nope';
+		}
+		
+
+	} //end of isset($_POST)	
+ ?>
+
 <?php include('includes/header.php'); ?>
 <?php find_selected_page();	?>
 <div class="container staff-container">
@@ -17,11 +57,11 @@
 						<fieldset>
 						<legend>Edit Subject: <?php echo $sel_subject['menu_name']; ?></legend>
 						<div class="input-group subject-input">
-							<input type="text" class="form-control" name='menu_name' id="menu_name" value="" placeholder="Subject name">
+							<input type="text" class="form-control" name='menu_name' id="menu_name" value="<?php echo $sel_subject['menu_name']; ?>" placeholder="">
 						</div>
 						<div class="input-group-btn">
 								
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Position<span class="caret"></span></button>
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><?php echo $sel_subject['position'] ?><span class="caret"></span></button>
 								<ul class="dropdown-menu">
 									<?php 
 										$subject_set = get_all_subjects();
@@ -33,14 +73,19 @@
 								</ul>
 							</div>
 							<div class="btn-group visibility-buttons" data-toggle="buttons">
-								<label class="btn btn-default">
-									<input type="radio" name="visible" value="0" >Visible
+								<!-- <button type="button" class="btn btn-primary">Left</button> -->
+								<label class="btn btn-default <?php if ($sel_subject['visible'] == 1) {
+									echo 'btn active';
+								} ?>">
+									<input type="radio" name="visible"  value="1" >Visible
 								</label>
-								<label class="btn btn-default">
-									<input type="radio" name="visible" value="1" >Invisible
+								<label class="btn btn-default <?php if ($sel_subject['visible'] == 0) {
+									echo 'btn active';
+								} ?>">
+									<input type="radio" name="visible" value="0" >Invisible
 								</label>
 							</div> <!-- end of btn-group --><br>
-							<button type="submit" id="submit" class="btn btn-default">Submit</button>
+							<button type="submit" id="submit" name="submit" value="Edit Subject" class="btn btn-default">Edit subject</button>
 							</fieldset>
 					</form>
 					
