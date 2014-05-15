@@ -3,21 +3,20 @@
 <?php require_once('includes/functions.php'); ?>
 
 <?php 
-
+	echo $_POST['visible'];
 	if(intval($_GET['subj']) == 0 ){
 		redirect_to('content.php');
 	}
 	if (isset($_POST['submit'])) { 
-		$errors = validate_form($_POST); 
-
+		$errors = validate_form($_POST);
 		if (empty($errors)) {
 			//perform update
 			$id = mysql_prep($_GET['subj']);
 			$menu_name = mysql_prep($_POST['menu_name']);
-			echo $_POST['menu_name'];
-			echo $_POST['subj'];
+			//echo $_POST['menu_name'];
+			//echo $_POST['subj'];
 			echo $_POST['position'];
-			echo $_POST['visible'];
+			//echo $_POST['visible'];
 			$position = mysql_prep($_POST['position']);
 			$visible = mysql_prep($_POST['visible']);
 
@@ -27,7 +26,7 @@
 								visible = {$visible}
 							WHERE id = {$id}";
 
-							echo $query;
+							//echo $query;
 			$result = mysql_query($query, $connection);
 			if (mysql_affected_rows() == 1) {
 				echo 'wahey';
@@ -67,7 +66,8 @@
 										$subject_set = get_all_subjects();
 										$subject_count = mysql_num_rows($subject_set);
 										for ($count=1; $count <= $subject_count+1; $count++) { 
-											echo "<li><a href='#' name = 'position' value={$count}>". $count . "</a></li>";
+											echo "<li><a href='#' class='edit_dropdown' name = 'position' value='{$count}'>". $count . "</a></li>";
+											
 										}
 									?>
 								</ul>
@@ -81,7 +81,7 @@
 								</label>
 									
 							</div> <!-- end of btn-group --><br>
-							<button type="submit" id="submit" name="submit" value="Edit Subject" class="btn btn-default">Edit subject</button>
+							<button type="submit" id="edit_submit" name="submit" value="Edit Subject" class="btn btn-default">Edit subject</button>
 							</fieldset>
 					</form>
 					
