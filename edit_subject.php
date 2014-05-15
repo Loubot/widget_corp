@@ -13,9 +13,9 @@
 
 				</div>
 				<div class="col-md-9 staff-right">
-					<form action="edit_subject.php" id="subject_form" method="post">
+					<form action="edit_subject.php?subj=<?php echo urlencode($sel_subject['id']); ?>" id="subject_form" method="post">
 						<fieldset>
-						<legend>Edit Subject</legend>
+						<legend>Edit Subject: <?php echo $sel_subject['menu_name']; ?></legend>
 						<div class="input-group subject-input">
 							<input type="text" class="form-control" name='menu_name' id="menu_name" value="" placeholder="Subject name">
 						</div>

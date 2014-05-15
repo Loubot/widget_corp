@@ -12,11 +12,7 @@ form{
 
 
 .panel{
-	background: -webkit-linear-gradient(left,rgba(192,192,192,1),rgba180,180,180,1)); /*Safari 5.1-6*/
-	background: -o-linear-gradient(right,rgba(192,192,192,1),rgba(180,180,180,1)); /*Opera 11.1-12*/
-	background: -moz-linear-gradient(right,rgba(192,192,192, 1),rgba(180,180,180,1)); /*Fx 3.6-15*/
-	background: linear-gradient(to right, rgba(192,192,192,1), rgba(180,180,180,1)); /*Standard*/
-	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+	
 }
 
 .form-container {
@@ -28,7 +24,11 @@ form{
 }
 
 .form-panel{
-
+	background: -webkit-linear-gradient(left,rgba(192,192,192,1),rgba180,180,180,1)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(right,rgba(192,192,192,1),rgba(180,180,180,1)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(right,rgba(192,192,192, 1),rgba(180,180,180,1)); /*Fx 3.6-15*/
+	background: linear-gradient(to right, rgba(192,192,192,1), rgba(180,180,180,1)); /*Standard*/
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 	height: 40%;
 }
 

@@ -105,7 +105,7 @@
 		while ($subject = mysql_fetch_array($subject_set)) {
 			echo "<a class='list-group-item";
 			if ($subject['id'] == $sel_subject['id']) { echo " active"; }
-			echo "' href='content.php?subj=" . urldecode($subject['id']) .
+			echo "' href='edit_subject.php?subj=" . urldecode($subject['id']) .
 			"'><h4>{$subject["menu_name"]}</h4></a>";
 			
 			$page_set = get_pages_for_subjects($subject['id']);
