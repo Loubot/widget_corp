@@ -72,18 +72,14 @@
 									?>
 								</ul>
 							</div>
-							<div class="btn-group visibility-buttons" data-toggle="buttons">
-								<!-- <button type="button" class="btn btn-primary">Left</button> -->
-								<label class="btn btn-default <?php if ($sel_subject['visible'] == 1) {
-									echo 'btn active';
-								} ?>">
-									<input type="radio" name="visible"  value="1" >Visible
+							<div class="btn-group visibility-buttons" data-toggle="buttons">									
+								<label class="btn btn-default <?php if($sel_subject['visible'] == 1){ echo 'active'; } ?>">
+									<input type='radio' name='visible' class='visibility' id='visible'value='1'>Visible
 								</label>
-								<label class="btn btn-default <?php if ($sel_subject['visible'] == 0) {
-									echo 'btn active';
-								} ?>">
-									<input type="radio" name="visible" value="0" >Invisible
+								<label class="btn btn-default <?php if($sel_subject['visible'] == 0){ echo 'active'; }?>">
+									<input type='radio' name='visible' class='visibility' id='visible'value='0'>Invisible
 								</label>
+									
 							</div> <!-- end of btn-group --><br>
 							<button type="submit" id="submit" name="submit" value="Edit Subject" class="btn btn-default">Edit subject</button>
 							</fieldset>

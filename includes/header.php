@@ -18,7 +18,7 @@
 			  //alert($('.input-group-btn').find('.btn').val());
 			});
 			$('#submit').click(function(e){
-				alert($('.btn-group > .btn.active').attr("value"));
+				alert($('.btn-group').find('.active').children('.visibility').val());
 								
 			})
 

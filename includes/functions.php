@@ -137,7 +137,8 @@
 			}
 			
 		}
-	}
-	return $errors;
+		return $errors;
 
+	}
+	
 ?>
