@@ -3,38 +3,43 @@
 <?php require_once('includes/functions.php'); ?>
 
 <?php 
-	echo $_POST['visible'];
+	//echo $_POST['position'];
 	if(intval($_GET['subj']) == 0 ){
 		redirect_to('content.php');
 	}
 	if (isset($_POST['submit'])) { 
 		$errors = validate_form($_POST);
 		if (empty($errors)) {
+			echo "No errors <br>";
 			//perform update
 			$id = mysql_prep($_GET['subj']);
 			$menu_name = mysql_prep($_POST['menu_name']);
-			//echo $_POST['menu_name'];
-			//echo $_POST['subj'];
-			echo $_POST['position'];
-			//echo $_POST['visible'];
+			echo 'menu_name' . $_POST['menu_name']. '<br>';
+			echo 'id' . $id . '<br>';
+			//echo 'subj '.$_POST['subj'].'<br>';
+			echo 'position '.$_POST['position'].'<br>';
+			echo 'visible '.$_POST['visible'].'<br>';
 			$position = mysql_prep($_POST['position']);
 			$visible = mysql_prep($_POST['visible']);
 
 			$query = "UPDATE subjects SET
-								menu_name = {$menu_name}
-								position = {$position}
+								menu_name = '{$menu_name}',
+								position = {$position},
 								visible = {$visible}
 							WHERE id = {$id}";
 
-							//echo $query;
-			$result = mysql_query($query, $connection);
+							echo $query .'<br>';
+			$result = mysql_query($query);
 			if (mysql_affected_rows() == 1) {
 				echo 'wahey';
 			}else{
 				//failed
+				echo 'sql failed' . $result . '<br>';
 			}
 		}else{
-			echo 'nope';
+			foreach ($errors as $error) {
+				echo $error . "<br>";
+			}
 		}
 		
 
