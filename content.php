@@ -39,7 +39,9 @@
 									echo "{$sel_page['content']}";
 								echo "</div>"; //end of panel-body
 							echo "</div>"; //end of panel_default
-							
+							echo "<div class='btn-group'>
+										<a class='btn btn-default' href='edit_page.php?page=" . $sel_page['id'] . "'>Edit page</a>
+										</div>";
 						}else{
 							echo "<h2>Select a subject or page to edit</h2>";
 						}

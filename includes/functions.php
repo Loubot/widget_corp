@@ -91,7 +91,7 @@
 			$sel_subject = get_subject_by_id($_GET['subj']);
 		}elseif (isset($_GET['page'])) {
 			$sel_subject = NULL;
-			echo 'hello ' .$_GET['page'];
+			//echo 'hello ' .$_GET['page'];
 			$sel_page = get_page_by_id($_GET['page']);
 		}else{
 			$sel_subject = NULL;
@@ -115,7 +115,7 @@
 			while($page = mysql_fetch_array($page_set)){
 				echo "<a class='list-group-item";
 				if ($page['id'] == $sel_page['id']) { echo " active"; }
-				echo "' href='edit_subject.php?page=".
+				echo "' href='content.php?page=".
 				urldecode($page['id']) .
 				"'>{$page['menu_name']}</a>";
 			}
