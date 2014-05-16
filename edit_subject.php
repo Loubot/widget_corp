@@ -31,14 +31,15 @@
 							// echo $query .'<br>';
 			$result = mysql_query($query);
 			if (mysql_affected_rows() == 1) {
-				// echo 'wahey';
+				$message = "The subject was successfully updated";
 			}else{
 				//failed
-				// echo 'sql failed' . $result . '<br>';
+				$message = "The subject update failed";
+				$message .= "<br>" . mysql_error();
 			}
 		}else{
 			foreach ($errors as $error) {
-				echo $error . "<br>";
+				$message = "There were " . count($errors);
 			}
 		}
 		
@@ -57,9 +58,14 @@
 
 				</div>
 				<div class="col-md-9 staff-right">
+					
 					<form action="edit_subject.php?subj=<?php echo urlencode($sel_subject['id']); ?>" id="subject_form" method="post">
 						<fieldset>
 						<legend>Edit Subject: <?php echo $sel_subject['menu_name']; ?></legend>
+						<?php if (!empty($message)) {
+								echo "<p>{$message}</p>";
+							}
+							?>
 						<div class="input-group subject-input">
 							<input type="text" class="form-control" name='menu_name' id="menu_name" value="<?php echo $sel_subject['menu_name']; ?>" placeholder="">
 						</div>
@@ -86,7 +92,11 @@
 								</label>
 									
 							</div> <!-- end of btn-group --><br>
-							<button type="submit" id="edit_submit" name="submit" value="Edit Subject" class="btn btn-default">Edit subject</button>
+							<div class="btn-group">
+								<button type="submit" id="edit_submit" name="submit" value="Edit Subject" class="btn btn-info">Edit subject</button>
+								<button href="delete_subject.php?subj=<?php echo $_GET['subj']; ?>" class="btn btn-danger">Delete subject</button>	
+							</div>
+							
 							</fieldset>
 					</form>
 					

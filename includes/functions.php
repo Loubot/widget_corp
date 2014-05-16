@@ -126,7 +126,7 @@
 		$errors = array();
 		$required_fields = array('menu_name', 'position', 'visible');
 		foreach ($required_fields as $field_name) {
-			if (!isset($submitted_data[$field_name]) || (empty($submitted_data[$field_name])) && $submitted_data[$fieldname] != 0) {
+			if (!isset($submitted_data[$field_name]) || (empty($submitted_data[$field_name])) && $submitted_data[$field_name] != 0) {
 				$errors[] = $field_name;
 			}
 		}
