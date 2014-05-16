@@ -30,18 +30,23 @@
 ?>
 
 <?php
+
 	$query = "INSERT INTO subjects (
 						menu_name, position, visible
 						) VALUES (
 						'{$menu_name}', {$position}, {$visible}
 						)";
+	echo "menu_name {$menu_name} <br>";
+	echo "position {$position} <br>";
+	echo "visible {$visible} <br>";
+	echo $query;
 	if (mysql_query($query, $connection)) {
 		//Success
 		redirect_to('content.php');
 	}else{
 		//Display error message
 		echo "<p>Subject creation failed</p>";
-		echo "<p>{mysql_error()}</p>";
+		echo "<p>". mysql_error() ."</p>";
 	}
 ?>
 
