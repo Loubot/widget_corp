@@ -16,10 +16,10 @@
 	}
 
 	function redirect_to($location = NULL){
-		// if ($location != NULL) {
-		// 	header("Location: {$location}");
-		// 	exit;
-		// }
+		if ($location != NULL) {
+			header("Location: {$location}");
+			exit;
+		}
 		
 	}
 
@@ -91,6 +91,7 @@
 			$sel_subject = get_subject_by_id($_GET['subj']);
 		}elseif (isset($_GET['page'])) {
 			$sel_subject = NULL;
+			echo 'hello ' .$_GET['page'];
 			$sel_page = get_page_by_id($_GET['page']);
 		}else{
 			$sel_subject = NULL;

@@ -10,7 +10,7 @@
 					<?php
 						navigation($sel_subject, $sel_page);
 
-							echo "<a href='new_subject.php' class='list-group-item list-group-item-info'>Add a new subject</a>";
+						echo "<a href='new_subject.php' class='list-group-item list-group-item-info'>Add a new subject</a>";
 						echo "</div>"; //end of out list-group
 
 						

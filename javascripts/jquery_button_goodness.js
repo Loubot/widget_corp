@@ -12,4 +12,8 @@ $(document).ready(function(){
 		
 	})
 
+	$('#new_subject_submit').click(function(e){
+		$('#subject_form').append("<input type='hidden' name='position' value='" + $('.dropdown-toggle').text() + "'/>");
+	})
+
 })

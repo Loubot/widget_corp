@@ -39,7 +39,7 @@
 			}
 		}else{
 			foreach ($errors as $error) {
-				$message = "There were " . count($errors);
+				$message = "There were " . count($errors) . " errors";
 			}
 		}
 		
@@ -94,7 +94,8 @@
 							</div> <!-- end of btn-group --><br>
 							<div class="btn-group">
 								<button type="submit" id="edit_submit" name="submit" value="Edit Subject" class="btn btn-info">Edit subject</button>
-								<button href="delete_subject.php?subj=<?php echo $_GET['subj']; ?>" class="btn btn-danger">Delete subject</button>	
+								<a href="delete_subject.php?subj=<?php echo urlencode($_GET['subj']); ?>" class="btn btn-danger" 
+									onclick="return confirm('Are you sure?');" >Delete subject</a>	
 							</div>
 							
 							</fieldset>

@@ -59,7 +59,7 @@
 										</div> <!-- end of sizing -->
 									</div> <!-- end of form-group -->
 
-									<button type="submit" id="submit" class="btn btn-default btn-block">Submit</button>
+									<button type="submit" id="new_subject_submit" class="btn btn-default btn-block">Submit</button>
 										
 								</form>
 							</div> <!-- end of panel-default -->

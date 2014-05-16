@@ -6,7 +6,7 @@
 	$errors = array();
 	$required_fields = array('menu_name', 'position', 'visible');
 	foreach ($required_fields as $field_name) {
-		if (!isset($_POST[$field_name]) || empty($_POST[$field_name])) {
+		if (!isset($_POST[$field_name]) || (empty($_POST[$field_name]) && ($_POST[$field_name] != 0))) {
 			$errors[] = $field_name;
 		}
 	}
@@ -25,7 +25,7 @@
 <?php 	
 	$menu_name = $_POST['menu_name'];
 	$position = $_POST['position'];
-	echo $position;
+	//echo $position;
 	$visible = $_POST['visible'];
 ?>
 
@@ -42,6 +42,7 @@
 	echo $query;
 	if (mysql_query($query, $connection)) {
 		//Success
+		echo 'success <br>';
 		redirect_to('content.php');
 	}else{
 		//Display error message
