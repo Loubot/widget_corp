@@ -20,7 +20,7 @@
 									<div class="panel-heading">
 										<h3 class="panel-title">Add Subject</h3>
 									</div> <!-- end of panel-heading -->
-								<form action="create_subject.php" id="subject_form" class='subject_form' method="post">
+									<form action="create_subject.php" id="subject_form" class='subject_form' method="post">
 									
 									<div class='row'>
 										<div class='col-xs-12 col-sm12 col-md-12'>

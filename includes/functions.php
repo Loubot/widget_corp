@@ -40,6 +40,17 @@
 		return $subject_set;
 	}
 
+	function get_all_pages(){
+		global $connection;
+		$query = "SELECT *
+							FROM pages
+							ORDER BY position ASC";
+
+		$pages_set = mysql_query($query, $connection);
+		confirm_query($pages_set);
+		return $pages_set;
+	}
+
 	function get_pages_for_subjects($subject_id){
 		global $connection;
 		$query = "SELECT * 
