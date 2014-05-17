@@ -3,6 +3,7 @@
 
 <?php include('includes/header.php'); ?>
 <?php	find_selected_page();	?>
+<?php $page = get_page_by_id($_GET['page']); ?>
 <div class="container staff-container">
 			<div class="container-fluid staff_body">
 				<div class="col-md-3 staff-left">
@@ -18,6 +19,12 @@
 					?>
 				</div>
 				<div class="col-md-9 staff-right">	
-
-
+					<div class="panel panel-default">
+						<div class="panel-heading"><h2><?php echo $page['menu_name']; ?></h2></div>
+						<div class='panel-body'>
+							<?php echo $page['content']; ?>
+						</div>
+					</div>
+					
+					
 <?php include('includes/footer.php'); ?>

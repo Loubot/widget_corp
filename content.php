@@ -19,21 +19,16 @@
 					?>
 				</div>
 				<div class="col-md-9 staff-right">
-
-					<div class="panel panel-default panel-primary">
-						<div class="panel-heading">Staff menu</div>
-						<div class="panel-body">Welcome to the staff area</div>
-					</div> <!-- end of panel-default -->
 					<?php
 						if (!is_null($sel_subject)) {
 							echo "<div class='panel panel-default'>";
 								echo "<div class='panel-heading'>";
-									echo "<h2 class='panel-title'>{$sel_subject['menu_name']}</h2>";
+									echo "<h2>{$sel_subject['menu_name']}</h2>";
 							
 						}elseif (!is_null($sel_page)) {
 							echo "<div class='panel panel-default'>";
 								echo "<div class='panel-heading'>";
-									echo "<h2 class='panel-title'>{$sel_page['menu_name']}</h2>";
+									echo "<h2 >{$sel_page['menu_name']}</h2>";
 								echo "</div>"; //end of panel-heading
 								echo "<div class='panel-body'>";
 									echo "{$sel_page['content']}";

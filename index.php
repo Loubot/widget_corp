@@ -25,7 +25,7 @@
 						<div class="panel-body">Welcome to the staff area</div>
 					</div> <!-- end of panel-default -->
 					<div class="list-group">
-						<a href="#" class="list-group-item"><u>Manage Website Content</u></a>
+						<a href="content.php" class="list-group-item"><u>Manage Website Content</u></a>
 						<a href="#" class="list-group-item"><u>Add Staff User</u></a>
 						<a href="#" class="list-group-item"><u>Logout</u></a>					
 					</div> <!-- end of list-group -->
