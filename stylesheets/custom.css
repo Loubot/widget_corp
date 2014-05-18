@@ -15,6 +15,11 @@ form{
 	
 }
 
+.input-group-addon {
+    min-width:80px;
+    text-align:left;
+}
+
 .form-container {
 	height: 100%;
 }

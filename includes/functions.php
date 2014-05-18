@@ -1,6 +1,6 @@
 <?php
 
-	//This file is the place to store all 
+	//This file is the place to store all functions
 
 	function mysql_prep($value){
 		$magic_quotes_active = get_magic_quotes_gpc();
@@ -102,7 +102,6 @@
 			$sel_subject = get_subject_by_id($_GET['subj']);
 		}elseif (isset($_GET['page'])) {
 			$sel_subject = NULL;
-			//echo 'hello ' .$_GET['page'];
 			$sel_page = get_page_by_id($_GET['page']);
 		}else{
 			$sel_subject = NULL;
@@ -142,7 +141,8 @@
 				$errors[] = $field_name;
 			}
 		}
-		$fields_with_lengths = array('menu_name' => 30);
+		
+		$fields_with_lengths = array('menu_name' => 30);		
 		foreach ($fields_with_lengths as $fieldname => $maxlength) {
 			if (strlen(trim(mysql_prep($submitted_data[$fieldname]))) > $maxlength) {
 				$errors[] = $fieldname;
@@ -151,6 +151,17 @@
 		}
 		return $errors;
 
+	}
+
+	function validate_page_form($submitted_data){
+		$errors = array();
+		$required_fields = array('content', 'position', 'visible');
+		foreach ($required_fields as $field_name) {
+			if(!isset($submitted_data[$field_name]) || (empty($submitted_data[$field_name])) && $submitted_data[$field_name] != 0){
+				$errors[] = $field_name;
+			}
+		}
+		return $errors;
 	}
 	
 ?>

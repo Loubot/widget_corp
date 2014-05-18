@@ -17,6 +17,8 @@ $(document).ready(function(){
 	})
 	$('#edit_page_submit').click(function(e){
 		$('#edit_page_form').append("<input type='hidden' name='position' value='" + $('.dropdown-toggle').text() + "'/>");
+		var value = $('.btn.btn-default.active').find('.visibility').val();
+		$('#edit_page_form').append("<input type='hidden' name='visible' value='" + value + "'/>" );
 	})
 
 })
