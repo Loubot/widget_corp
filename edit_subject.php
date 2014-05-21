@@ -3,10 +3,12 @@
 <?php require_once('includes/functions.php'); ?>
 
 <?php 
+
 	//echo $_POST['position'];
 	if(intval($_GET['subj']) == 0 ){
 		redirect_to('content.php');
 	}
+	$this_subject_pages = get_pages_for_subjects($_GET['subj']);
 	if (isset($_POST['submit'])) { 
 		$errors = validate_form($_POST);
 		if (empty($errors)) {
@@ -100,6 +102,21 @@
 							
 							</fieldset>
 					</form>
+
+					<hr>
+
+					<div class="list-group">
+						<a href="#" class="list-group-item">
+							<h2 class='list-group-item-heading'>Pages in this subject</h2>
+						</a>
+						<?php
+							while ($page = mysql_fetch_array($this_subject_pages)) {
+								echo $page['menu_name'] . '<br>';
+							}
+							
+						 ?>
+					</div>
+
 					
 					
 

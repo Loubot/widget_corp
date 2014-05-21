@@ -11,9 +11,6 @@ form{
 }
 
 
-.panel{
-	
-}
 
 .input-group-addon {
     min-width:80px;
@@ -34,7 +31,7 @@ form{
 	background: -moz-linear-gradient(right,rgba(192,192,192, 1),rgba(180,180,180,1)); /*Fx 3.6-15*/
 	background: linear-gradient(to right, rgba(192,192,192,1), rgba(180,180,180,1)); /*Standard*/
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-	height: 40%;
+	
 }
 
 .panel-heading{

@@ -69,7 +69,7 @@
 										<div class='row'>
 											<div class='col-xs-12 col-sm-12 col-md-12'>
 												<div class='input-group'>
-													<input type='text' class='form-control' name='content' value="<?php echo $sel_page['content'] ?>" placeholder="<?php echo $sel_page['content']; ?>">
+													<textarea type='text'  class='form-control' name='content' value="<?php echo $sel_page['content'] ?>" placeholder="<?php echo $sel_page['content']; ?>"><?php echo $sel_page['content'] ?></textarea>
 													<span class="input-group-addon">Content</span>
 												</div> <!-- end of input group -->
 											</div> <!-- end of col-xs-12 -->
