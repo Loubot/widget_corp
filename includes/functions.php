@@ -155,7 +155,7 @@
 
 	function validate_page_form($submitted_data){
 		$errors = array();
-		$required_fields = array('content', 'position', 'visible');
+		$required_fields = array('content', 'position', 'visible', 'menu_name');
 		foreach ($required_fields as $field_name) {
 			if(!isset($submitted_data[$field_name]) || (empty($submitted_data[$field_name])) && $submitted_data[$field_name] != 0){
 				$errors[] = $field_name;
