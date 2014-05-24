@@ -155,6 +155,9 @@
 
 	function validate_page_form($submitted_data){
 		$errors = array();
+		if (!is_numeric($submitted_data['position'])) {
+					$errors[] = 'position';
+				}		
 		$required_fields = array('content', 'position', 'visible', 'menu_name');
 		foreach ($required_fields as $field_name) {
 			if(!isset($submitted_data[$field_name]) || (empty($submitted_data[$field_name])) && $submitted_data[$field_name] != 0){

@@ -3,7 +3,27 @@
 
 <?php
 	if (isset($_POST['submit'])) {
-		echo $sel_subject; 
+		$id = $_POST['subj'];
+		$errors = validate_page_form($_POST);
+		if (empty($errors)) {
+			$menu_name = mysql_prep($_POST['menu_name']);
+			$content = mysql_prep($_POST['content']);
+			$position = mysql_prep($_POST['position']);
+			$visible = mysql_prep($_POST['visible']);
+			$query = "INSERT INTO
+								pages
+								(menu_name, position, visible, content, subject_id
+								) VALUES (
+								'{$menu_name}', {$position}, {$visible}, '{$content}', {$id})";
+			echo $query;
+			$result = mysql_query($query, $connection);
+		}else{
+			foreach ($errors as $key) {
+				echo $key . "<br>";
+			}
+		}
+	}else{
+		$id = $_GET['subj'];
 	}
 ?>
 
@@ -25,7 +45,7 @@
 							<div class="panel-heading">
 								<h3>Create Page</h3>
 							</div>
-							<form action="create_page.php" method="post">
+							<form action="create_page.php" id='create_page_form' method="post">
 								<div class="row">
 									<div class="col-md-12 col-xs-12 col-sm-12">
 										<div class="input-group">
@@ -51,19 +71,33 @@
 												</button>
 												<ul class="dropdown-menu">
 													<?php
-														$pages = get_pages_for_subjects($_GET['subj']);
+														$pages = get_pages_for_subjects($id);
 														$count = mysql_num_rows($pages);
 														for ($i=1; $i <= $count +1; $i++) { 
-															echo "<li>{$i}</li>";														
+															echo "<li><a class='edit_dropdown' value='{$i}'	name='position' href='#'>{$i}</a></li>";														
 														}														
 													?>
 												</ul>
-											</div>
+											</div> <!-- end of input-group-btn -->
+										</div> <!-- end of input-group -->
+									</div> <!-- end of col-md-12 col-xs-12 col-sm-12 -->
+								</div> <!-- end of row -->
+								<div class="row">
+									<div class="col-md-12 col-xs-12 col-sm12">
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-default active">
+												<input type="radio" value="1" class="create_page_visibility" >Visible
+											</label>
+											<label class="btn btn-default">
+												<input type="radio" value="0" class="create_page_visibility" >Invisible
+											</label>
+											<input name="visible" id="visibility_value" type="hidden">
 										</div>
 									</div>
 								</div>
-								<input type="hidden" name="subj" value="<?php echo $_GET['subj']; ?>">
-								<input type="submit" name="submit" value="Create Page" class="btn btn-success">
+								<input type="hidden" name="subj" value="<?php echo $id ?>">
+								<input type="submit" name="submit" id='create_page_submit' value="Create Page" class="btn btn-success">
+
 							</form>
 						</div>
 					</div>
