@@ -155,7 +155,7 @@
 
 	function validate_page_form($submitted_data){
 		$errors = array();
-		if (!is_numeric($submitted_data['position'])) {
+		if (!is_numeric(trim($submitted_data['position']))) {
 			echo $submitted_data['position'];
 			$errors[] = 'position';
 		}		

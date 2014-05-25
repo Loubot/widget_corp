@@ -7,7 +7,7 @@
 		if (empty($errors)) {
 			$menu_name = mysql_prep($_POST['menu_name']);
 			$visible = mysql_prep($_POST['visible']);
-			$position = mysql_prep($_POST['position']);
+			$position = $_POST['position'];
 			
 			$content = mysql_prep($_POST['content']);
 			$id = mysql_prep($_GET['page']);
