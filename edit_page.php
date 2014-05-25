@@ -2,14 +2,12 @@
 <?php require_once('includes/functions.php'); ?>
 <?php echo headers_sent(); ?>
 <?php
-	
-	
-	if (isset($_POST['submit'])) {
+	if (isset($_POST['submit'])) {		
 		$errors = validate_page_form($_POST);
 		if (empty($errors)) {
 			$menu_name = mysql_prep($_POST['menu_name']);
 			$visible = mysql_prep($_POST['visible']);
-			$position = $_POST['position'];
+			$position = mysql_prep($_POST['position']);
 			
 			$content = mysql_prep($_POST['content']);
 			$id = mysql_prep($_GET['page']);
@@ -27,8 +25,8 @@
 			}
 		}else{
 			
-			foreach ($_POST as $key => $value) {
-				// echo "{$key}: {$value} <br>";
+			foreach ($errors as $key ) {
+				echo "{$key}:  <br>";
 			}
 		}
 	}
@@ -45,10 +43,6 @@
 
 						echo "<a href='new_subject.php' class='list-group-item list-group-item-info'>Add a new subject</a>";
 						echo "</div>"; //end of out list-group
-
-						
-
-
 					?>
 				</div>
 				<div class="col-md-9 staff-right">
@@ -81,12 +75,12 @@
 														<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
 															<?php echo $sel_page['position']; ?><span class='caret'></span>
 														</button>
-														<ul class='dropdown-menu' role='menu'>
-															<?php
+														<ul class='dropdown-menu' role='menu'><?php
 																$pages_set = get_all_subjects();
 																$pages_count = mysql_num_rows($pages_set);
 																for ($count=1; $count < $pages_count+1; $count++) { 
-																	echo "<li><a href=# class='edit_dropdown' name='position' value={$count}>{$count}</a></li>";
+
+																	echo "<li><a href='#' class='edit_dropdown' name='position' value='{$count}'>{$count}</a></li>";
 																}
 															?>
 														</ul> <!-- end of dropdown-menu -->
