@@ -1,38 +1,34 @@
 <?php require_once('includes/functions.php'); ?>
-<html>
-<head>
-	<title>Widget Corp</title>
-	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
-	<script type="text/javascript" src="javascripts/jquery.js"></script>
-	<script type="text/javascript" src="javascripts/bootstrap.js"></script>
-	<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
-</head>
-<body>
-	
-		<div class="container staff_header" >
-			<div class="container-fluid">
-				<div class="page-header"><h1>Widget Corp</h1></div>
-			</div> <!-- end of container-fluid -->
-		</div> <!-- end of staff header -->
-		<div class="container">
-			<div class="container-fluid staff_body">
-				<div class="col-md-3 staff-left"></div>
-				<div class="col-md-9 staff-right">
-					<div class="panel panel-default panel-primary">
-						<div class="panel-heading">Staff menu</div>
-						<div class="panel-body">Welcome to the staff area</div>
-					</div> <!-- end of panel-default -->
-					<div class="list-group">
-						<a href="content.php" class="list-group-item"><u>Manage Website Content</u></a>
-						<a href="#" class="list-group-item"><u>Add Staff User</u></a>
-						<a href="#" class="list-group-item"><u>Logout</u></a>					
-					</div> <!-- end of list-group -->
-				</div> <!-- end of staff-right	 -->
-			</div> <!-- end of container-fluid -->
-		</div> <!-- end of container -->
-	
-	
-</body>
-</html>
+<?php require_once('includes/connection.php'); ?>
+<?php require_once('includes/header.php'); ?>
+<?php find_selected_page(); ?>
+<div class="container staff-container">
+	<div class="container-fluid staff_body">
+		<div class="col-md-3 staff-left">
+			<?php
+				echo public_navigation($sel_subject, $sel_page);
+
+				
+				echo "</div>"; //end of out list-group
+			?>
+		</div> <!-- end of staff-left -->
+
+		<div class="col-md-9 staff-right">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<?php
+						if ($sel_page == NULL && $sel_subject == NULL) {
+							echo "<div class='page-header'><h1>Please select something<h1></div>";
+						}elseif ($sel_page != NULL) {
+							echo "<div class='page-header'><h1>".	$sel_page['menu_name'] . "</h1></div>".
+							"<div>". $sel_page['content'] . "</div>";
+						}else{
+							echo "<div class='page-header'><h1>" . $sel_subject['menu_name'] . "</h1></div>";
+						}
+					?>
+				</div>
+			</div>
+
+
+
+<?php include('includes/footer.php'); ?>		

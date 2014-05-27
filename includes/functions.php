@@ -29,11 +29,14 @@
 		}
 	}
 
-	function get_all_subjects(){
+	function get_all_subjects($public = true){
 		global $connection;
-		$query = "SELECT * 
-							FROM subjects
-							ORDER BY position ASC";
+		$query = "SELECT * 							
+							FROM subjects ";
+							if ($public) {
+								$query .= "WHERE visible = 1 ";
+							}
+							$query .= "ORDER BY position ASC";
 
 		$subject_set = mysql_query($query, $connection);
 		confirm_query($subject_set);
@@ -51,12 +54,15 @@
 		return $pages_set;
 	}
 
-	function get_pages_for_subjects($subject_id){
+	function get_pages_for_subjects($subject_id, $public){
 		global $connection;
 		$query = "SELECT * 
 							FROM pages 
-							WHERE subject_id = {$subject_id}
-							ORDER BY position ASC";
+							WHERE subject_id = {$subject_id} ";
+							if ($public) {
+								$query .= "and visible = 1 ";
+							}
+							$query .= "ORDER BY position ASC";
 
 		$page_set = mysql_query($query, $connection);
 		confirm_query($page_set);
@@ -97,7 +103,11 @@
 	function find_selected_page(){
 		global $sel_subject;
 		global $sel_page;
-		if (isset($_GET['subj'])) {
+		if (isset($_GET['subj']) && isset($_GET['page'])) {
+			$sel_subject = get_subject_by_id($_GET['subj']);
+			$sel_page = get_page_by_id($_GET['page']);
+		}
+		elseif (isset($_GET['subj'])) {
 			$sel_page = NULL;
 			$sel_subject = get_subject_by_id($_GET['subj']);
 		}elseif (isset($_GET['page'])) {
@@ -109,8 +119,8 @@
 		}
 	}
 
-	function navigation($sel_subject, $sel_page){
-		$subject_set = get_all_subjects();
+	function navigation($sel_subject, $sel_page, $public = false){
+		$subject_set = get_all_subjects($public);
 
 		echo "<div class='list-group'>";
 		while ($subject = mysql_fetch_array($subject_set)) {
@@ -119,7 +129,7 @@
 			echo "' href='edit_subject.php?subj=" . urldecode($subject['id']) .
 			"'><h4>{$subject["menu_name"]}</h4></a>";
 			
-			$page_set = get_pages_for_subjects($subject['id']);
+			$page_set = get_pages_for_subjects($subject['id'], $public);
 										
 			echo "<div class= 'list-group'>";
 			while($page = mysql_fetch_array($page_set)){
@@ -131,6 +141,29 @@
 			}
 			echo "</div>"; //end of inner list-group
 		}		
+	}
+
+	function public_navigation($sel_subject, $sel_page, $public = true){
+		$subject_set = get_all_subjects($public);
+		echo "<div class='list-group'>";
+		while ($subject = mysql_fetch_array($subject_set)) {
+			echo "<a class='list-group-item";
+			if($subject['id'] == $sel_subject['id']) { echo " active"; }
+			echo "' href='index.php?subj=". urlencode($subject['id']) . "'><h4>{$subject['menu_name']}</h4></a>";
+
+			$page_set = get_pages_for_subjects($subject['id'], $public);
+
+			echo "<div class='list-group'>";
+			if ($subject['id'] == $sel_subject['id']) {
+				while ($page = mysql_fetch_array($page_set)) {
+				echo "<a class='list-group-item";
+					if ($page['id'] == $sel_page['id']) { echo " list-group-item-success"; }
+					echo "' href='index.php?subj=" . urlencode($subject['id']). "&page=" . urlencode($page['id']) . "'>{$page['menu_name']}</a>";
+					}
+			}
+			echo "</div>";
+		}
+
 	}
 
 	function validate_form($submitted_data){

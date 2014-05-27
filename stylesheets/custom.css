@@ -10,7 +10,17 @@ form{
 	padding: 1% 1% 1% 1%;	
 }
 
+.list-group-item:hover{
+	border:.5px inset #999;
+  -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+}
 
+.list-group-item-success:hover{
+	border:1px inset #999;
+  -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+  -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+}
 
 .input-group-addon {
     min-width:80px;
@@ -25,7 +35,7 @@ form{
 	height: 100%;
 }
 
-.form-panel{
+.form-panel {
 	background: -webkit-linear-gradient(left,rgba(192,192,192,1),rgba180,180,180,1)); /*Safari 5.1-6*/
 	background: -o-linear-gradient(right,rgba(192,192,192,1),rgba(180,180,180,1)); /*Opera 11.1-12*/
 	background: -moz-linear-gradient(right,rgba(192,192,192, 1),rgba(180,180,180,1)); /*Fx 3.6-15*/
