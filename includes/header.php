@@ -8,7 +8,9 @@
 	<title>Widget Corp</title>
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/login.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
+	
 	<script type="text/javascript" src="javascripts/jquery.js"></script>
 	<script type="text/javascript" src="javascripts/bootstrap.js"></script>
 	<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>

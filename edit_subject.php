@@ -8,7 +8,7 @@
 	if(intval($_GET['subj']) == 0 ){
 		redirect_to('content.php');
 	}
-	$this_subject_pages = get_pages_for_subjects($_GET['subj']);
+	$this_subject_pages = get_pages_for_subjects($_GET['subj'], false);
 	if (isset($_POST['submit'])) { 
 		$errors = validate_form($_POST);
 		if (empty($errors)) {

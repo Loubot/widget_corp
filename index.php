@@ -21,13 +21,13 @@
 							echo "<div class='page-header'><h1>Please select something<h1></div>";
 						}elseif ($sel_page != NULL) {
 							echo "<div class='page-header'><h1>".	$sel_page['menu_name'] . "</h1></div>".
-							"<div>". $sel_page['content'] . "</div>";
+							"<div>". strip_tags(nl2br($sel_page['content']), "<br><a><b>") . "</div>";
 						}else{
 							echo "<div class='page-header'><h1>" . $sel_subject['menu_name'] . "</h1></div>";
 						}
 					?>
-				</div>
-			</div>
+				</div> <!-- end of col-xs-12 col-sm-12 col-md-12 -->
+			</div> <!-- end or row -->
 
 
 

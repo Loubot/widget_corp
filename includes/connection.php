@@ -14,7 +14,5 @@
 	// $result = mysql_query("SELECT * FROM subjects", $connection);
 	// if (!$result) {
 	// 	die("Database query failed" . mysql_error());
-	// }
-
-	
+	// }	
 ?>

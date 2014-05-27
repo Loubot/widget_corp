@@ -54,7 +54,7 @@
 		return $pages_set;
 	}
 
-	function get_pages_for_subjects($subject_id, $public){
+	function get_pages_for_subjects($subject_id, $public = true){
 		global $connection;
 		$query = "SELECT * 
 							FROM pages 
@@ -134,7 +134,7 @@
 			echo "<div class= 'list-group'>";
 			while($page = mysql_fetch_array($page_set)){
 				echo "<a class='list-group-item";
-				if ($page['id'] == $sel_page['id']) { echo " active"; }
+				if ($page['id'] == $sel_page['id']) { echo " list-group-item-success"; }
 				echo "' href='content.php?page=".
 				urldecode($page['id']) .
 				"'>{$page['menu_name']}</a>";

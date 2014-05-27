@@ -19,29 +19,20 @@
 					?>
 				</div>
 				<div class="col-md-9 staff-right">
-					<?php
-						if (!is_null($sel_subject)) {
-							echo "<div class='panel panel-default'>";
-								echo "<div class='panel-heading'>";
-									echo "<h2>{$sel_subject['menu_name']}</h2>";
-							
-						}elseif (!is_null($sel_page)) {
-							echo "<div class='panel panel-default'>";
-								echo "<div class='panel-heading'>";
-									echo "<h2 >{$sel_page['menu_name']}</h2>";
-								echo "</div>"; //end of panel-heading
-								echo "<div class='panel-body'>";
-									echo "{$sel_page['content']}";
-								echo "</div>"; //end of panel-body
-							echo "</div>"; //end of panel_default
-							echo "<div class='btn-group'>
-										<a class='btn btn-default' href='edit_page.php?page=" . $sel_page['id'] . "'>Edit page</a>
-										</div>";
-						}else{
-							echo "<h2>Select a subject or page to edit</h2>";
-						}
-						
-					?>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<?php
+								if ($sel_page == NULL && $sel_subject == NULL) {
+									echo "<div class='page-header'><h1>Please select something<h1></div>";
+								}elseif ($sel_page != NULL) {
+									echo "<div class='page-header'><h1>".	$sel_page['menu_name'] . "</h1></div>".
+									"<div>". strip_tags(nl2br($sel_page['content']), "<br><a><b>") . "</div>";
+								}else{
+									echo "<div class='page-header'><h1>" . $sel_subject['menu_name'] . "</h1></div>";
+								}
+							?>
+						</div> <!-- end of col-xs-12 col-sm-12 col-md-12 -->
+					</div> <!-- end or row -->
 
 <?php include('includes/footer.php'); ?>
 

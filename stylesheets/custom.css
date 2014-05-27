@@ -11,7 +11,7 @@ form{
 }
 
 .list-group-item:hover{
-	border:.5px inset #999;
+	border:1px inset #999;
   -webkit-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
   -moz-box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
 }
@@ -85,3 +85,6 @@ form{
 .visibility-buttons{
 	margin: 1% 0 1% 0;
 }
+
+.user-create-form-control { margin-bottom: 10px; }
+
