@@ -3,7 +3,7 @@
 <?php 
 	if (isset($_POST['submit'])) {
 		$hashed_password = hash('whirlpool', $_POST['password']);
-		$query = "SELECT * FROM 
+		$query = "SELECT id, username FROM 
 							users WHERE 
 							username = '{$_POST['username']}' AND 
 							hashed_password = '${hashed_password}'";

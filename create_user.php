@@ -58,6 +58,7 @@
 			            <input class="form-control" name="youremail" placeholder="Your Email" type="email" />
 			            <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />
 			            <input class="form-control" name="password" placeholder="New Password" type="password" />
+			            <input class="form-control" name="password_confirmation" placeholder="Confirm Password" type="password" />
 			            <input class="form-control" name="username" placeholder="username" type="text" />
 			            <!-- <label for="">
 		                Birth Date</label> -->
