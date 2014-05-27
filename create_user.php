@@ -1,5 +1,7 @@
 <?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/functions.php'); ?>
+<?php require_once('includes/session.php'); ?>
+<?php confirm_logged_in(); ?>
 <?php echo headers_sent(); ?>
 <?php 	
 	$message = NULL;
@@ -26,6 +28,7 @@
 	<div class="container-fluid staff_body">
 		<div class="col-md-3 staff-left">
 			<?php
+				find_selected_page();
 				echo public_navigation($sel_subject, $sel_page);
 
 				

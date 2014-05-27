@@ -1,7 +1,7 @@
-
 <?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/functions.php'); ?>
-
+<?php require_once('includes/session.php'); ?>
+<?php confirm_logged_in(); ?>
 <?php 
 
 	//echo $_POST['position'];
@@ -55,6 +55,7 @@
 	<div class="container-fluid staff_body">
 		<div class="col-md-3 staff-left">
 			<?php navigation($sel_subject, $sel_page);
+				echo "<a href='new_subject.php' class='list-group-item list-group-item-info'>Add a new subject</a>";
 				echo '</div>'; //end of outer list-group
 			 ?>
 

@@ -1,8 +1,8 @@
-
 <?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/functions.php'); ?>
-
 <?php include('includes/header.php'); ?>
+<?php require_once('includes/session.php'); ?>
+<?php confirm_logged_in(); ?>
 <?php find_selected_page();	?>
 <div class="container staff-container">
 			<div class="container-fluid staff_body">

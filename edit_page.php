@@ -1,5 +1,7 @@
 <?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/functions.php'); ?>
+<?php require_once('includes/session.php'); ?>
+<?php confirm_logged_in(); ?>
 <?php echo headers_sent(); ?>
 <?php
 	if (isset($_POST['submit'])) {		

@@ -1,6 +1,6 @@
-<!DOCTYPE html> 
 <?php require_once('includes/functions.php'); ?>
-
+<?php require_once('includes/session.php'); ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -17,10 +17,22 @@
 	<script type="text/javascript" src="javascripts/jquery_button_goodness.js"></script>
 </head>
 <body>
+	<?php
+		if(!logged_in()){
+			echo "<div class='container staff_header' >
+						<div class='container-fluid'>
+							<div class='page-header'><h1>Widget Corp <small><a class='pull-right' href='login.php'>Admin login</a></small></h1></div>
+						</div> <!-- end of container-fluid -->
+					</div> <!-- end of staff header -->";
+		}else{
+			echo "<div class='container staff_header' >
+						<div class='container-fluid'>
+							<div class='page-header'><h1>Widget Corp <small><a class='pull-right' href='logout.php'>Logout</a></small></h1></div>
+						</div> <!-- end of container-fluid -->
+					</div> <!-- end of staff header -->";
+		}
+
+	?>
 	
-		<div class="container staff_header" >
-			<div class="container-fluid">
-				<div class="page-header"><h1>Widget Corp</h1></div>
-			</div> <!-- end of container-fluid -->
-		</div> <!-- end of staff header -->
+	
 		
