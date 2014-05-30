@@ -18,7 +18,7 @@
 </head>
 <body>
 	<?php
-		if(!logged_in()){
+		if(!confirm_logged_in()){
 			echo "<div class='container staff_header' >
 						<div class='container-fluid'>
 							<div class='page-header'><h1>Widget Corp <small><a class='pull-right' href='login.php'>Admin login</a></small></h1></div>

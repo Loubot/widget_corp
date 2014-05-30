@@ -2,7 +2,7 @@
 <?php require_once('includes/session.php'); ?>
 <?php require_once('includes/connection.php'); ?>
 <?php 
-	if(logged_in()){ redirect_to('content.php'); }
+	if(confirm_logged_in()){ redirect_to('content.php'); }
 	$message = NULL;
 	if (isset($_POST['submit'])) {
 		$hashed_password = hash('whirlpool', $_POST['password']);
